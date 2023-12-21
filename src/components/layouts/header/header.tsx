@@ -1,10 +1,12 @@
 import { ModeToggle } from "@/components/mode-toggle";
+import Image from "next/image";
 import Link from "next/link";
 import { NavLinks } from "./header.data";
 
 export const HeaderLayout = () => {
   return (
     <header className="px-20 py-6 border-b flex justify-between items-center">
+      <Image src="/logo.svg" alt="logo" width={44} height={44} />
       <nav className="flex gap-14">
         {NavLinks.map((links) => (
           <Link

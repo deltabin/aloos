@@ -34,11 +34,11 @@ export const HomeMain = () => {
           </div>
         </div>
         <Image
-          className="brightness-75"
-          width={350}
+          className="brightness-75 rounded"
+          width={400}
           height={400}
-          src="/enemy.png"
-          alt="People"
+          src="/img/group.png"
+          alt="group"
         />
       </section>
       <HomeCards />
