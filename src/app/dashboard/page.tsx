@@ -1,15 +1,10 @@
-import { SignOut } from '@/components/sign-out';
-import { readUserSession } from '@/lib/actions';
+import { currentUser } from '@clerk/nextjs';
 
 const DashboardPage = async () => {
-  const { data } = await readUserSession();
+  const user = await currentUser();
 
-  return (
-    <main>
-      {data.session?.user.email}
-      <SignOut />
-    </main>
-  );
+  console.log(user);
+  return <main>123</main>;
 };
 
 export default DashboardPage;

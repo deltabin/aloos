@@ -2,6 +2,8 @@ import { HeaderLayout } from '@/components/layouts/header/header';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
+import { ClerkProvider } from '@clerk/nextjs';
+import { dark as ClerkThemeDark } from '@clerk/themes';
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
@@ -18,14 +20,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' suppressHydrationWarning>
-      <body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
-        <ThemeProvider attribute='class' defaultTheme='system'>
-          <HeaderLayout />
-          {children}
-          <Toaster />
-        </ThemeProvider>
-      </body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        baseTheme: ClerkThemeDark
+      }}
+    >
+      <html lang='en' suppressHydrationWarning>
+        <body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
+          <ThemeProvider attribute='class' defaultTheme='system'>
+            <HeaderLayout />
+            {children}
+            <Toaster />
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
